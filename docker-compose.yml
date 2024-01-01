@@ -1,0 +1,27 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./site-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_API_URL=https://backend:3001
+  backend:
+    build:
+      context: ./site-backend
+      dockerfile: Dockerfile
+    ports:
+    - "3001:3001"
+    environment:
+    - DB_HOST=mariadb
+    - DB_USER=${DB_USER}
+    - DB_PASSWORD=${DB_PASSWORD} 
+    depends_on:
+    - mariadb
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
