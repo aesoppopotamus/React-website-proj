@@ -14,4 +14,4 @@ RUN npm install -g http-server
 EXPOSE 8080
 
 # Run http-server when the container launches
-CMD ["http-server, "-p 8080"]
+CMD ["http-server", "-p 8080"]
