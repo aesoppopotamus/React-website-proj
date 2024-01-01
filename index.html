@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content=width=device-width, initial-scale="1.0">
+        <title>Joshua Xavier Candela - Technology Professional</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel@7.12.10/min/babel.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Joshua Xavier Candela</h1>
+            <p>Application Enginner II</p>
+        </header>
+        <section id="about">
+            <div id="react-root"></div>
+            <script type="text/babel">
+            class MyComponent extends React.Component {
+                render() {
+                    return (
+                    <div>
+                       <h2>Hello! Salutations! Greetings!</h2> 
+                       <p>Fascinated with technology, passionate about learning, and excited for the future.</p>
+                   </div> 
+                       );
+                }
+            }
+
+            ReactDOM.render(<MyComponent />, document.getElementById('react-root'));
+            </script>
+            </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Self-teaching</li>
+                <li>Communicative</li>
+                <li>Research</li>
+            </ul>
+        </section>
+        <footer>
+            <p>Contact me at: @aesoppopotamus on X.com</p>
+        </footer>
+    </body>
+</html>
