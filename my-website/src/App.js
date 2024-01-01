@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="combine.png" className="App-logo" alt="logo" />
+        <img src={combine} className="App-logo" alt="logo" />
       <p>Greetings, this is my first React Application!</p>
       <p>May thy walk this new path gracefully, learn a lot, make mistakes, and expouse happiness.</p>
     <a
