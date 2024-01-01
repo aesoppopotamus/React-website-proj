@@ -1,17 +1,13 @@
-# Use an official lightweight Node.js as a parent image
-FROM node:alpine
-
-# Set the working directory in the container
-WORKDIR /usr/src/app
-
-# Copy the current directory ocntents into the container at /usr/src/app
+# Stage 1: Build the React application
+FROM node:alpine as build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
 COPY . .
+RUN npm run build
 
-# Install a simple HTTP server to serve static content
-RUN npm install -g http-server
-
-# Make port 8080 available to the world outside this container
-EXPOSE 8080
-
-# Run http-server when the container launches
-CMD ["http-server", "-p 8080"]
+# Stage 2: Serve the app with Nginx
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
