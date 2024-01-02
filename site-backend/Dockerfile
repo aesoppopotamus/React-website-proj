@@ -15,8 +15,6 @@ RUN npm install
 # Copy the rest of appcode
 COPY . .
 
-COPY migrate.sh /app/
-
 # Expose port Node.js listens on
 EXPOSE 3001
 

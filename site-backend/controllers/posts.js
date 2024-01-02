@@ -1,5 +1,5 @@
 const Post = require('../models/post');
-const { Sequelize, DataTypes} = require('sequelize');
+//const { Sequelize } = require('sequelize');
 
 exports.createPost = async (req, res) => {
     try {

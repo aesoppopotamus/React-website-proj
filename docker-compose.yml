@@ -1,5 +1,16 @@
 version: "3"
 services:
+  mariadb:
+    image: mariadb:latest
+    environment:
+    - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    - MYSQL_DATABASE=${MYSQL_DATABASE}
+    - MYSQL_USER=${MYSQL_USER}
+    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    env_file:
+    - .env
+    volumes:
+    - ./data:/var/lib/mariadb
   frontend:
     build:
       context: ./site-frontend
@@ -8,20 +19,20 @@ services:
       - "80:80"
     environment:
       - REACT_APP_API_URL=http://backend:3001
+    env_file:
+    - .env
   backend:
     build:
       context: ./site-backend
       dockerfile: Dockerfile
     ports:
     - "3001:3001"
-    env_file:
-    - .env.local
     depends_on:
-    - mariadb
-    command: [./migrate.sh]
-  mariadb:
-    image: mariadb:latest
+      - mariadb
+    environment:
+    - DB_HOST=mariadb
+    - DB_USER=${MYSQL_USER}
+    - DB_PASSWORD=${MYSQL_PASSWORD}
+    command: [./scripts/migrate.sh]
     env_file:
-    - .env.local
-    volumes:
-    - ./data:/var/lib/mariadb
+    - .env

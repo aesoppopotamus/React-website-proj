@@ -1,18 +1,18 @@
 // models/post.js
-const { Sequelize, DataTypes} = require('sequelize');
-const sequilize = require('../sequelize-config');
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('./index.js')
 
-const Post = sequilize.define('post', {
+const Post = sequelize.define('post', {
     title: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     content: {
-        type: Sequelize.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
     author: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     }
 });
