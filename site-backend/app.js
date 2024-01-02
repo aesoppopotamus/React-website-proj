@@ -1,9 +1,15 @@
 const express = require('express')
+const cors = require('cors');
 const { sequelize } = require('./models');
 
-
 const app = express();
+
+app.use(cors());
 app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+})
 
 const postsRouter = require('./routes/posts');
 app.use('/api/posts', postsRouter);
@@ -16,7 +22,8 @@ app.listen(port, async () => {
         await sequelize.authenticate();
         console.log('Connection to the database has been established successfully.');
 
-        await sequelize.sync();
+        // should probably kill this later
+        await sequelize.sync({ alter:true });
     } catch (error) {
         console.error('Unable to connect to database:', error);
     }

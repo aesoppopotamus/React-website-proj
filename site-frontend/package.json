@@ -6,7 +6,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "react-router-dom": "^6.21.1"
+    "react-router-dom": "^6.21.1",
+    "react-scripts": "^5.0.1"
   },
   "browserslist": {
     "production": [
