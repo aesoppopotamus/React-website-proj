@@ -1,5 +1,8 @@
 const express = require('express')
 const app = express();
+const { Sequelize, DataTypes} = require('sequelize');
+
+app.use(express.json());
 
 const postsRouter = require('./routes/posts');
 app.use('/api/posts', postsRouter);
