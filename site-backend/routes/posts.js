@@ -6,11 +6,12 @@ const {
     getPostById,
     updatePost,
     deletePost,
-}
-const postsController = require('../controllers/posts);
+} = require('../controllers/posts');
 
-router.post('/', postsController.createPost);
-router.get('/', postsController.getAllPosts);
-router.get('/:id', postsController.getPostById);
+router.post('/', createPost);
+router.get('/', getAllPosts);
+router.get('/:id', getPostById);
+router.put('/:id', updatePost);
+router.delete('/:id', deletePost);
 
 module.exports = router;

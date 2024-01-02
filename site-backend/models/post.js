@@ -10,7 +10,7 @@ const Post = sequilize.define('post', {
     content: {
         type: Sequelize.TEXT,
         allowNull: false,
-    }
+    },
     author: {
         type: Sequelize.STRING,
         allowNull: false,

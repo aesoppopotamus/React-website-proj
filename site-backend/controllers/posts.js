@@ -76,7 +76,7 @@ exports.deletePost = async (req, res) => {
     try {
         const { id } = req.params;
 
-        cont post = await Post.findByPk(id);
+        const post = await Post.findByPk(id);
 
         if (!post) {
             return res.status (404).json({ message: 'Post not found '});
